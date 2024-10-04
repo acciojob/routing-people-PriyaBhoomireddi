@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import User from "./User";
 
-// Update usersData to match the Cypress test
+// Update usersData with 'username'
 const usersData = [
-  { id: 1, name: "Leanne Graham", email: "leanne@example.com", age: 30 },
-  { id: 2, name: "Ervin Howell", email: "ervin@example.com", age: 25 },
-  { id: 3, name: "Clementine Bauch", email: "clementine@example.com", age: 28 },
+  { id: 1, name: "Leanne Graham", username: "Bret", email: "leanne@example.com", age: 30 },
+  { id: 2, name: "Ervin Howell", username: "Antonette", email: "ervin@example.com", age: 25 },
+  { id: 3, name: "Clementine Bauch", username: "Samantha", email: "clementine@example.com", age: 28 },
 ];
 
 function App() {
@@ -16,12 +16,12 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setUsers(usersData); // Simulating API fetch
-      setLoading(false); // Stop the loading state
+      setLoading(false); // Stop loading state
     }, 1000); // Simulated API delay
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Loading message for Cypress
+    return <div>Loading...</div>; // Ensure "Loading..." message is rendered
   }
 
   return (
@@ -31,16 +31,13 @@ function App() {
         <ul>
           {users.map((user) => (
             <li key={user.id}>
-              <Link to={`/users/${user.id}`}>{user.name}</Link> {/* Updated URL */}
+              <Link to={`/users/${user.id}`}>{user.name}</Link> {/* Ensure correct URL */}
             </li>
           ))}
         </ul>
 
         <Routes>
-          <Route
-            path="/users/:id"
-            element={<User users={users} />}
-          />
+          <Route path="/users/:id" element={<User users={users} />} />
         </Routes>
       </div>
     </Router>

@@ -6,13 +6,14 @@ const User = ({ users }) => {
   const user = users.find((u) => u.id === parseInt(id));
 
   if (!user) {
-    return <div>User not found</div>; // In case the user ID doesn't exist
+    return <div>User not found</div>; // Handle invalid user
   }
 
   return (
     <div>
-      <h2>{user.name}</h2> {/* Display the user's name */}
-      <p>Name: {user.name}</p> {/* Match the expected content */}
+      <h2>{user.name}</h2> {/* Display user's name */}
+      <p>Name: {user.name}</p>
+      <p>Username: {user.username}</p> {/* Add username as expected by the test */}
       <p>Email: {user.email}</p>
       <p>Age: {user.age}</p>
     </div>
