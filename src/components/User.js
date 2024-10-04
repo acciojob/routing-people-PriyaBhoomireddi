@@ -6,7 +6,7 @@ const User = ({ users }) => {
   const user = users.find((u) => u.id === parseInt(id));
 
   if (!user) {
-    return <div>User not found</div>;
+    return <div>User not found</div>; // Display this if no user matches the id
   }
 
   return (
